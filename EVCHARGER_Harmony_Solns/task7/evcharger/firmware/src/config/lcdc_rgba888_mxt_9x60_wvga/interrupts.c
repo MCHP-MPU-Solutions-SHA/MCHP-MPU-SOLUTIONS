@@ -149,6 +149,7 @@ void FLEXCOM6_InterruptHandler(          void );
 void TC0_InterruptHandler(               void );
 void LCDC_Interrupt_Handler(             void );
 void TC1_InterruptHandler(               void );
+void DBGU_InterruptHandler(              void );
 void RTC_InterruptHandler(               void );
 
 /* Handlers for vectors that are shared by multiple interrupts */
@@ -170,6 +171,7 @@ IrqData irqData[] = {
     { 17,  (uint32_t) AIC_REGS,    TC0_InterruptHandler,       AIC_SMR_SRCTYPE_INT_LEVEL_SENSITIVE_Val,  0x0 },
     { 25,  (uint32_t) AIC_REGS,    LCDC_Interrupt_Handler,     AIC_SMR_SRCTYPE_INT_LEVEL_SENSITIVE_Val,  0x0 },
     { 45,  (uint32_t) AIC_REGS,    TC1_InterruptHandler,       AIC_SMR_SRCTYPE_INT_LEVEL_SENSITIVE_Val,  0x0 },
+    { 47,  (uint32_t) AIC_REGS,    DBGU_InterruptHandler,      AIC_SMR_SRCTYPE_INT_LEVEL_SENSITIVE_Val,  0x0 },
 };
 
 uint32_t irqDataEntryCount = sizeof( irqData ) / sizeof( irqData[ 0 ]);

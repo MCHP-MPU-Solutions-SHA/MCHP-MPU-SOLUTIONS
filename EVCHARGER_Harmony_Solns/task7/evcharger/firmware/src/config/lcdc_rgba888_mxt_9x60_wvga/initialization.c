@@ -246,6 +246,26 @@ static void SYSC_Disable( void )
 }
 
 
+/*******************************************************************************
+  Function:
+    void STDIO_BufferModeSet ( void )
+
+  Summary:
+    Sets the buffering mode for stdin and stdout
+
+  Remarks:
+ ********************************************************************************/
+static void STDIO_BufferModeSet(void)
+{
+
+    /* Make stdin unbuffered */
+    setbuf(stdin, NULL);
+
+    /* Make stdout unbuffered */
+    setbuf(stdout, NULL);
+}
+
+
 
 
 /*******************************************************************************
@@ -265,6 +285,9 @@ void SYS_Initialize ( void* data )
 
 	SYSC_Disable( );
 
+    STDIO_BufferModeSet();
+  
+
   
     CLK_Initialize();
 
@@ -283,14 +306,17 @@ void SYS_Initialize ( void* data )
     TC1_CH0_TimerInitialize(); 
      
     
-    FLEXCOM6_TWI_Initialize();
-
-	RTC_Initialize();
-
  
     TC0_CH0_TimerInitialize(); 
     TC0_CH1_TimerInitialize(); 
     TC0_CH2_TimerInitialize();
+	RTC_Initialize();
+
+    FLEXCOM6_TWI_Initialize();
+ 
+    DBGU_Initialize();
+	printf("haha DBGU\n\r");
+
 	BSP_Initialize();
 
     /* Initialize I2C0 Driver Instance */
