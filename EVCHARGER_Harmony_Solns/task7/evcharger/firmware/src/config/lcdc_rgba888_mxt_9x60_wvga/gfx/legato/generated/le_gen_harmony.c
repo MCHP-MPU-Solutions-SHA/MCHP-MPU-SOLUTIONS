@@ -64,6 +64,8 @@ void Legato_Initialize(void)
 
 void Legato_Tasks(void)
 {
+    static bool bl = false;
+
     switch(legatoState)
     {
         case LEGATO_STATE_INIT:
@@ -81,6 +83,12 @@ void Legato_Tasks(void)
             legato_updateScreenState();
 
             leUpdate(0);
+
+            if (!bl) {
+                LCDC_SetPWMEnable(true);
+                bl = true;
+                printf("haha ON\n\r");
+            }
 
             break;
         }
