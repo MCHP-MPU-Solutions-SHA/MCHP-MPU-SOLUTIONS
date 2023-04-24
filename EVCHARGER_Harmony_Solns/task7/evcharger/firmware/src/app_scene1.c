@@ -181,7 +181,7 @@ void init_Scene1(void)
     currentTime.tm_mon = 2;
     currentTime.tm_mday = 31;
     currentTime.tm_wday = 0;
-    RTC_TimeSet( &currentTime );
+    //RTC_TimeSet( &currentTime );
     /*Initializing the sprite image array*/
     init_anim_images();
     /*TC0_CH2 callback to handle charge cable animation*/

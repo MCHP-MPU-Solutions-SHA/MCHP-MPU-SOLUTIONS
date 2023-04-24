@@ -85,6 +85,7 @@ void Legato_Tasks(void)
             leUpdate(0);
 
             if (!bl) {
+                printf("                                                         \n\r");
                 LCDC_SetPWMEnable(true);
                 bl = true;
                 printf("haha ON\n\r");
